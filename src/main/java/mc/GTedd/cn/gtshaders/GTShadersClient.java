@@ -34,6 +34,7 @@ public final class GTShadersClient implements ClientModInitializer {
     private static KeyMapping bindModeKey;
     private static KeyMapping triggerCrosshairKey;
     private static KeyMapping toggleGlowKey;
+    private static KeyMapping openLlmKey;
 
     @Override
     public void onInitializeClient() {
@@ -83,6 +84,14 @@ public final class GTShadersClient implements ClientModInitializer {
                 "key.gtshaders.toggle_glow",
                 InputConstants.Type.KEYBOARD,
                 InputConstants.KEY_PAGEUP,
+                category));
+
+        // 在后处理里跑的语言模型：一条 72 通道的独立链，随资源包发布。
+        // 和小地图一样属于「产物」而不是「效果层」，所以给它自己的入口而不是塞进效果库
+        openLlmKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.gtshaders.open_llm",
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_END,
                 category));
 
         ClientTickEvents.END_CLIENT_TICK.register(GTShadersClient::onTick);
@@ -144,6 +153,9 @@ public final class GTShadersClient implements ClientModInitializer {
         }
         while (toggleGlowKey.consumeClick()) {
             toggleCrosshairGlow(mc);
+        }
+        while (openLlmKey.consumeClick()) {
+            mc.gui.setScreen(new mc.GTedd.cn.gtshaders.llm.LlmScreen(mc.gui.screen()));
         }
 
         // 世界没了、工程没了就自动退出，免得留一个没法操作的模式

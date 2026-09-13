@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import mc.GTedd.cn.gtshaders.llm.LlmRuntime;
 import mc.GTedd.cn.gtshaders.runtime.GpuProfiler;
 import mc.GTedd.cn.gtshaders.runtime.PixelReadback;
 import mc.GTedd.cn.gtshaders.runtime.PreviewRuntime;
@@ -69,9 +70,14 @@ public abstract class GameRendererMixin {
         }
         try {
             PreviewRuntime.appendActiveIds(requested);
+            // 语言模型是资源包里的一条独立链，不走 codegen，但挂载方式与预览一样：每帧报到
+            LlmRuntime.appendActiveIds(requested);
         } catch (UnsupportedOperationException e) {
             // 原版换了别的不可变列表实现。这一帧挂不上，下一帧照常重试，不打日志免得刷屏。
         }
+        // uniform 必须在链被执行<b>之前</b>写：这里是 preparePostEffects 的 HEAD，
+        // 原版取链、跑通道都在之后，所以本帧写进去的 prompt 本帧就生效
+        LlmRuntime.uploadUniforms();
     }
 
     /** 分层计时：一轮测量从这一帧的后处理开始前算起。 */

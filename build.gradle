@@ -119,6 +119,41 @@ def targetVersion = [
         data_pack_format    : project.data_pack_format,
 ]
 
+// ---- 在后处理里跑的语言模型（TinyStories-1M，8bit 量化）----
+//
+// 权重不入库：generateLlmPack 会从镜像站下到 build/llm-cache/，产物落 build/distributions/。
+// 三道校验各管一段，缺一段就有一类错误漏出去：
+//   checkLlmPack   —— ShaderC 真编译，管「语法对不对」
+//   llm_simulate   —— numpy 按着色器语义重跑并与参考对拍，管「算得对不对」
+//   LlmPackTest    —— 解析链 JSON，管「格式与通道顺序对不对」
+tasks.register('generateLlmPack', Exec) {
+    description = '生成「在后处理里跑的语言模型」资源包'
+    group = 'build'
+    commandLine 'python', 'tools/build_llm_pack.py'
+    // 着色器源码也是输入：只声明 outputs 的话，改了 .fsh 这个任务会当自己是最新的，
+    // 于是校验器编的还是上一版的包——错误照旧、改动无效，很难看出是缓存在骗人
+    inputs.dir project.file('src/main/resources/assets/gtshaders/llm')
+    inputs.files project.files('tools/build_llm_pack.py', 'tools/llm_weights.py')
+    outputs.file project.file('build/distributions/GTShaders-LLM-26.3.zip')
+}
+
+tasks.register('checkLlmPack', JavaExec) {
+    description = '用游戏自带 ShaderC 编译语言模型资源包里的所有 shader'
+    group = 'verification'
+    dependsOn stageUnitTestClasses, 'generateLlmPack'
+    classpath = files(unitTestStageTests, unitTestStageMain) +
+            configurations.unitTestRuntimeClasspath + sourceSets.main.compileClasspath + configurations.minecraftNatives
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.ShaderLibCompileCheck'
+    args '--pack', project.file('build/distributions/GTShaders-LLM-26.3.zip').absolutePath
+}
+
+tasks.register('simulateLlm', Exec) {
+    description = '按着色器语义在 numpy 上重跑整条链，与参考实现逐 token 对拍'
+    group = 'verification'
+    dependsOn 'generateLlmPack'
+    commandLine 'python', 'tools/llm_simulate.py', '--tokens', '20'
+}
+
 // 把内置效果库编译成工程根目录下的 shaderlib/——一个可以直接加载的 26.3 资源包。
 // 跑在 unitTest 的 classpath 上（不需要 Minecraft 运行时），同样要用 ASCII 暂存目录绕开
 // 中文路径下 sun.jnu.encoding 的坑，理由见上面 unitTest 那一段。

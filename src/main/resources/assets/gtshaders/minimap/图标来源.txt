@@ -1,0 +1,12 @@
+图标来自用户提供的 betterlocatorbar.zip，仅提取与原版实体 ID 对应的生物头像和史蒂夫头像，保留原始像素尺寸。
+未打包个人头像、原包定位栏逻辑或其旧版 pack.mcmeta。此来源记录不构成重新授权或原创声明。
+源文件 SHA-256：f6e7241242c7c96bae3895c3e7593a40e6e877d05f67c80780b765d976b2ff97
+原始元数据：
+{
+    "pack": { 
+        "pack_format": 59,
+        "description": [
+            {"text":"作者：辰宸并不沉 ","color":"gray","bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false},
+            {"text":"第一个资源包","color":"gray","bold":false,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false}]
+    }
+}

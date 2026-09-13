@@ -116,6 +116,10 @@ public final class ShaderLibCompileCheck {
         }
 
         List<Job> all = new ArrayList<>(post);
+        if (!standalonePack && Files.isDirectory(VANILLA.resolve("include"))) {
+            all.add(new Job("portable/minimap.fsh", read("/assets/gtshaders/portable/minimap.fsh"),
+                    Shaderc.shaderc_glsl_fragment_shader, List.of()));
+        }
         all.addAll(core);
         List<Job> instrumented = standalonePack ? List.of() : collectInstrumented(post);
         if (!standalonePack) {
@@ -164,7 +168,7 @@ public final class ShaderLibCompileCheck {
         }
 
         System.out.println("=".repeat(72));
-        // all 里除了 post 与 core，还有 helper 冒烟用例。
+        // all 里除了 post 与 core，还有 portable/minimap 和 helper 冒烟用例。
         // 之前这行只报前两项，加起来对不上总数，看的人会以为漏编了。
         System.out.printf("后处理 %d 份，核心着色器变体 %d 份，调试插桩 %d 份，其它 %d 份，各编 2 个设备变体 = %d 次%n",
                 post.size(), core.size(), instrumented.size(),

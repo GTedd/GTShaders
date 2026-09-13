@@ -86,6 +86,7 @@ public final class GTShadersClient implements ClientModInitializer {
                 category));
 
         ClientTickEvents.END_CLIENT_TICK.register(GTShadersClient::onTick);
+        mc.GTedd.cn.gtshaders.minimap.MinimapRuntime.register(category);
         AnchorHud.register();
         BindModeHud.register();
 

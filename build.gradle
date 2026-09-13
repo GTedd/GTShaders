@@ -110,14 +110,61 @@ tasks.named('check') {
     // lightmap_flat 里那个「拿 GLSL 关键字 flat 当变量名」的 bug 藏了很久没被发现，
     // 就是因为在这之前素材库从来没被真正编译过——单元测试只验结构，验不出语法。
     dependsOn tasks.named('checkShaderLib')
+    dependsOn 'checkMinimapPack'
+    dependsOn 'checkClassicMinimapPack'
 }
 
-// 目标版本三件套，真源是 gradle.properties。processResources 把它展开给 TargetVersion。
+tasks.register('generateMinimapPack', Exec) {
+    description = '生成可直接安装的简体中文原版小地图复原包'
+    group = 'build'
+    commandLine 'python', 'tools/build_minimap_reproduction.py'
+}
+
+// 目标版本三件套，真源是 gradle.properties。processResources 把它展开给 TargetVersion，
+// 小地图的 python 工具走 tools/mc_target.py 读同一份文件。
 def targetVersion = [
         minecraft_version   : project.minecraft_version,
         resource_pack_format: project.resource_pack_format,
         data_pack_format    : project.data_pack_format,
 ]
+
+def classicMinimapResources = layout.buildDirectory.dir('generated/classicMinimap')
+tasks.register('generateClassicMinimap', Exec) {
+    description = '生成真实地形导出器的原版显示模板'
+    commandLine 'python', 'tools/build_minimap_reproduction.py', '--classic-template', '--output',
+            classicMinimapResources.get().file('assets/gtshaders/minimap/classic-template.zip').asFile.absolutePath
+    inputs.dir 'src/main/resources/assets/gtshaders/portable_v2'
+    inputs.dir 'src/main/resources/assets/gtshaders/minimap'
+    inputs.file 'src/main/resources/assets/gtshaders/textures/effect/minimap_icons.png'
+    inputs.file 'tools/build_minimap_reproduction.py'
+    inputs.file 'tools/mc_target.py'
+    // 模板里写着版本号和包格式号：不声明的话跟版本后这个任务仍判 UP-TO-DATE，jar 里打进去的还是旧版本的模板
+    inputs.properties targetVersion
+    outputs.dir classicMinimapResources
+}
+tasks.named('processResources') {
+    dependsOn 'generateClassicMinimap'
+    from classicMinimapResources
+}
+
+tasks.register('checkMinimapPack', JavaExec) {
+    description = '用游戏自带 ShaderC 编译原版小地图发布包里的所有 shader'
+    group = 'verification'
+    dependsOn stageUnitTestClasses, 'generateMinimapPack'
+    classpath = files(unitTestStageTests, unitTestStageMain) +
+            configurations.unitTestRuntimeClasspath + sourceSets.main.compileClasspath + configurations.minecraftNatives
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.ShaderLibCompileCheck'
+    args '--pack', project.file("build/distributions/GTMinimap-原版复原版-${project.minecraft_version}.zip").absolutePath
+}
+tasks.register('checkClassicMinimapPack', JavaExec) {
+    description = '编译真实地形版原版模板的所有 shader'
+    group = 'verification'
+    dependsOn stageUnitTestClasses
+    classpath = files(unitTestStageTests, unitTestStageMain) + configurations.unitTestRuntimeClasspath +
+            sourceSets.main.compileClasspath + configurations.minecraftNatives
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.ShaderLibCompileCheck'
+    args '--pack', classicMinimapResources.get().file('assets/gtshaders/minimap/classic-template.zip').asFile.absolutePath
+}
 
 // 把内置效果库编译成工程根目录下的 shaderlib/——一个可以直接加载的 26.3 资源包。
 // 跑在 unitTest 的 classpath 上（不需要 Minecraft 运行时），同样要用 ASCII 暂存目录绕开

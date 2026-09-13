@@ -1,0 +1,339 @@
+{
+  "schema": "gtminimap.icons.v1",
+  "cell": 16,
+  "columns": 16,
+  "icons": {
+    "minecraft:allay": {
+      "sprite": "gtshaders:minimap/entity/allay",
+      "slot": 0
+    },
+    "minecraft:armadillo": {
+      "sprite": "gtshaders:minimap/entity/armadillo",
+      "slot": 1
+    },
+    "minecraft:axolotl": {
+      "sprite": "gtshaders:minimap/entity/axolotl",
+      "slot": 2
+    },
+    "minecraft:bat": {
+      "sprite": "gtshaders:minimap/entity/bat",
+      "slot": 3
+    },
+    "minecraft:bee": {
+      "sprite": "gtshaders:minimap/entity/bee",
+      "slot": 4
+    },
+    "minecraft:blaze": {
+      "sprite": "gtshaders:minimap/entity/blaze",
+      "slot": 5
+    },
+    "minecraft:bogged": {
+      "sprite": "gtshaders:minimap/entity/bogged",
+      "slot": 6
+    },
+    "minecraft:breeze": {
+      "sprite": "gtshaders:minimap/entity/breeze",
+      "slot": 7
+    },
+    "minecraft:camel": {
+      "sprite": "gtshaders:minimap/entity/camel",
+      "slot": 8
+    },
+    "minecraft:cat": {
+      "sprite": "gtshaders:minimap/entity/cat",
+      "slot": 9
+    },
+    "minecraft:cave_spider": {
+      "sprite": "gtshaders:minimap/entity/cave_spider",
+      "slot": 10
+    },
+    "minecraft:chicken": {
+      "sprite": "gtshaders:minimap/entity/chicken",
+      "slot": 11
+    },
+    "minecraft:cow": {
+      "sprite": "gtshaders:minimap/entity/cow",
+      "slot": 12
+    },
+    "minecraft:creaking": {
+      "sprite": "gtshaders:minimap/entity/creaking",
+      "slot": 13
+    },
+    "minecraft:creeper": {
+      "sprite": "gtshaders:minimap/entity/creeper",
+      "slot": 14
+    },
+    "minecraft:dolphin": {
+      "sprite": "gtshaders:minimap/entity/dolphin",
+      "slot": 15
+    },
+    "minecraft:donkey": {
+      "sprite": "gtshaders:minimap/entity/donkey",
+      "slot": 16
+    },
+    "minecraft:drowned": {
+      "sprite": "gtshaders:minimap/entity/drowned",
+      "slot": 17
+    },
+    "minecraft:elder_guardian": {
+      "sprite": "gtshaders:minimap/entity/elder_guardian",
+      "slot": 18
+    },
+    "minecraft:ender_dragon": {
+      "sprite": "gtshaders:minimap/entity/ender_dragon",
+      "slot": 19
+    },
+    "minecraft:enderman": {
+      "sprite": "gtshaders:minimap/entity/enderman",
+      "slot": 20
+    },
+    "minecraft:endermite": {
+      "sprite": "gtshaders:minimap/entity/endermite",
+      "slot": 21
+    },
+    "minecraft:evoker": {
+      "sprite": "gtshaders:minimap/entity/evoker",
+      "slot": 22
+    },
+    "minecraft:fox": {
+      "sprite": "gtshaders:minimap/entity/fox",
+      "slot": 23
+    },
+    "minecraft:frog": {
+      "sprite": "gtshaders:minimap/entity/frog",
+      "slot": 24
+    },
+    "minecraft:ghast": {
+      "sprite": "gtshaders:minimap/entity/ghast",
+      "slot": 25
+    },
+    "minecraft:glow_squid": {
+      "sprite": "gtshaders:minimap/entity/glow_squid",
+      "slot": 26
+    },
+    "minecraft:goat": {
+      "sprite": "gtshaders:minimap/entity/goat",
+      "slot": 27
+    },
+    "minecraft:guardian": {
+      "sprite": "gtshaders:minimap/entity/guardian",
+      "slot": 28
+    },
+    "minecraft:happy_ghast": {
+      "sprite": "gtshaders:minimap/entity/happy_ghast",
+      "slot": 29
+    },
+    "minecraft:hoglin": {
+      "sprite": "gtshaders:minimap/entity/hoglin",
+      "slot": 30
+    },
+    "minecraft:horse": {
+      "sprite": "gtshaders:minimap/entity/horse",
+      "slot": 31
+    },
+    "minecraft:husk": {
+      "sprite": "gtshaders:minimap/entity/husk",
+      "slot": 32
+    },
+    "minecraft:illusioner": {
+      "sprite": "gtshaders:minimap/entity/illusioner",
+      "slot": 33
+    },
+    "minecraft:iron_golem": {
+      "sprite": "gtshaders:minimap/entity/iron_golem",
+      "slot": 34
+    },
+    "minecraft:llama": {
+      "sprite": "gtshaders:minimap/entity/llama",
+      "slot": 35
+    },
+    "minecraft:magma_cube": {
+      "sprite": "gtshaders:minimap/entity/magma_cube",
+      "slot": 36
+    },
+    "minecraft:mooshroom": {
+      "sprite": "gtshaders:minimap/entity/mooshroom",
+      "slot": 37
+    },
+    "minecraft:mule": {
+      "sprite": "gtshaders:minimap/entity/mule",
+      "slot": 38
+    },
+    "minecraft:ocelot": {
+      "sprite": "gtshaders:minimap/entity/ocelot",
+      "slot": 39
+    },
+    "minecraft:panda": {
+      "sprite": "gtshaders:minimap/entity/panda",
+      "slot": 40
+    },
+    "minecraft:parrot": {
+      "sprite": "gtshaders:minimap/entity/parrot",
+      "slot": 41
+    },
+    "minecraft:phantom": {
+      "sprite": "gtshaders:minimap/entity/phantom",
+      "slot": 42
+    },
+    "minecraft:pig": {
+      "sprite": "gtshaders:minimap/entity/pig",
+      "slot": 43
+    },
+    "minecraft:piglin": {
+      "sprite": "gtshaders:minimap/entity/piglin",
+      "slot": 44
+    },
+    "minecraft:piglin_brute": {
+      "sprite": "gtshaders:minimap/entity/piglin_brute",
+      "slot": 45
+    },
+    "minecraft:pillager": {
+      "sprite": "gtshaders:minimap/entity/pillager",
+      "slot": 46
+    },
+    "minecraft:polar_bear": {
+      "sprite": "gtshaders:minimap/entity/polar_bear",
+      "slot": 47
+    },
+    "minecraft:pufferfish": {
+      "sprite": "gtshaders:minimap/entity/pufferfish",
+      "slot": 48
+    },
+    "minecraft:rabbit": {
+      "sprite": "gtshaders:minimap/entity/rabbit",
+      "slot": 49
+    },
+    "minecraft:ravager": {
+      "sprite": "gtshaders:minimap/entity/ravager",
+      "slot": 50
+    },
+    "minecraft:salmon": {
+      "sprite": "gtshaders:minimap/entity/salmon",
+      "slot": 51
+    },
+    "minecraft:sheep": {
+      "sprite": "gtshaders:minimap/entity/sheep",
+      "slot": 52
+    },
+    "minecraft:shulker": {
+      "sprite": "gtshaders:minimap/entity/shulker",
+      "slot": 53
+    },
+    "minecraft:silverfish": {
+      "sprite": "gtshaders:minimap/entity/silverfish",
+      "slot": 54
+    },
+    "minecraft:skeleton": {
+      "sprite": "gtshaders:minimap/entity/skeleton",
+      "slot": 55
+    },
+    "minecraft:skeleton_horse": {
+      "sprite": "gtshaders:minimap/entity/skeleton_horse",
+      "slot": 56
+    },
+    "minecraft:slime": {
+      "sprite": "gtshaders:minimap/entity/slime",
+      "slot": 57
+    },
+    "minecraft:sniffer": {
+      "sprite": "gtshaders:minimap/entity/sniffer",
+      "slot": 58
+    },
+    "minecraft:snow_golem": {
+      "sprite": "gtshaders:minimap/entity/snow_golem",
+      "slot": 59
+    },
+    "minecraft:spider": {
+      "sprite": "gtshaders:minimap/entity/spider",
+      "slot": 60
+    },
+    "minecraft:squid": {
+      "sprite": "gtshaders:minimap/entity/squid",
+      "slot": 61
+    },
+    "minecraft:player": {
+      "sprite": "gtshaders:minimap/entity/steve",
+      "slot": 62
+    },
+    "minecraft:stray": {
+      "sprite": "gtshaders:minimap/entity/stray",
+      "slot": 63
+    },
+    "minecraft:strider": {
+      "sprite": "gtshaders:minimap/entity/strider",
+      "slot": 64
+    },
+    "minecraft:tadpole": {
+      "sprite": "gtshaders:minimap/entity/tadpole",
+      "slot": 65
+    },
+    "minecraft:trader_llama": {
+      "sprite": "gtshaders:minimap/entity/trader_llama",
+      "slot": 66
+    },
+    "minecraft:tropical_fish": {
+      "sprite": "gtshaders:minimap/entity/tropical_fish",
+      "slot": 67
+    },
+    "minecraft:turtle": {
+      "sprite": "gtshaders:minimap/entity/turtle",
+      "slot": 68
+    },
+    "minecraft:vex": {
+      "sprite": "gtshaders:minimap/entity/vex",
+      "slot": 69
+    },
+    "minecraft:villager": {
+      "sprite": "gtshaders:minimap/entity/villager",
+      "slot": 70
+    },
+    "minecraft:vindicator": {
+      "sprite": "gtshaders:minimap/entity/vindicator",
+      "slot": 71
+    },
+    "minecraft:wandering_trader": {
+      "sprite": "gtshaders:minimap/entity/wandering_trader",
+      "slot": 72
+    },
+    "minecraft:warden": {
+      "sprite": "gtshaders:minimap/entity/warden",
+      "slot": 73
+    },
+    "minecraft:witch": {
+      "sprite": "gtshaders:minimap/entity/witch",
+      "slot": 74
+    },
+    "minecraft:wither": {
+      "sprite": "gtshaders:minimap/entity/wither",
+      "slot": 75
+    },
+    "minecraft:wither_skeleton": {
+      "sprite": "gtshaders:minimap/entity/wither_skeleton",
+      "slot": 76
+    },
+    "minecraft:wolf": {
+      "sprite": "gtshaders:minimap/entity/wolf",
+      "slot": 77
+    },
+    "minecraft:zoglin": {
+      "sprite": "gtshaders:minimap/entity/zoglin",
+      "slot": 78
+    },
+    "minecraft:zombie": {
+      "sprite": "gtshaders:minimap/entity/zombie",
+      "slot": 79
+    },
+    "minecraft:zombie_horse": {
+      "sprite": "gtshaders:minimap/entity/zombie_horse",
+      "slot": 80
+    },
+    "minecraft:zombie_villager": {
+      "sprite": "gtshaders:minimap/entity/zombie_villager",
+      "slot": 81
+    },
+    "minecraft:zombified_piglin": {
+      "sprite": "gtshaders:minimap/entity/zombified_piglin",
+      "slot": 82
+    }
+  }
+}

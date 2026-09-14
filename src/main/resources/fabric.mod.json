@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "gtshaders",
+  "version": "${version}",
+  "name": "GTShaders",
+  "icon": "assets/gtshaders/icon.png",
+  "description": "In-game visual editor for Minecraft post-processing and core shaders: live preview, auto-detected parameters, one-click resource pack export.",
+  "authors": [
+    "GTedd"
+  ],
+  "contact": {
+    "sources": "https://github.com/HappyWithMin/GTShaders",
+    "issues": "https://github.com/HappyWithMin/GTShaders/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "mc.GTedd.cn.gtshaders.GTShadersClient"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "gtshaders.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": ">=26.3-rc.2 <26.4",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

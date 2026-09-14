@@ -1,0 +1,10 @@
+# 统一换行：仓库内一律 LF，避免 Windows 上提交出 CRLF 导致 gradlew 在 Unix 下失效
+* text=auto eol=lf
+*.bat text eol=crlf
+
+*.jar binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

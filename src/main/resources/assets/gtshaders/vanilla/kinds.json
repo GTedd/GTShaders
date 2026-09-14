@@ -1,0 +1,160 @@
+{
+  "_comment": "可编辑的原版着色器种类。这里只有 GTShaders 自己的元数据（分类、名字、钩子策略），不含任何 Mojang 源码——模板在运行时从游戏里取，见 VanillaSource。",
+  "categories": [
+    { "id": "world",  "zh_cn": "世界几何",   "en_us": "World Geometry" },
+    { "id": "entity", "zh_cn": "实体与物品", "en_us": "Entities & Items" },
+    { "id": "fx",     "zh_cn": "粒子与特效", "en_us": "Particles & FX" },
+    { "id": "sky",    "zh_cn": "天空与环境", "en_us": "Sky & Environment" },
+    { "id": "ui",     "zh_cn": "界面与文字", "en_us": "UI & Text" },
+    { "id": "system", "zh_cn": "系统",       "en_us": "System" }
+  ],
+  "kinds": [
+    {
+      "id": "terrain", "category": "world", "zh_cn": "地形", "en_us": "Terrain",
+      "path": "core/terrain", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "区块地形。坐标是区块相对的，要用 ChunkPosition 还原绝对坐标。改这里能做水波、树叶摇摆。",
+      "note_en": "Chunk terrain. Coordinates are chunk-relative; use ChunkPosition to recover world space."
+    },
+    {
+      "id": "block", "category": "world", "zh_cn": "单个方块", "en_us": "Block",
+      "path": "core/block", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "非区块批次的方块渲染。",
+      "note_en": "Non-batched block rendering."
+    },
+    {
+      "id": "entity", "category": "entity", "zh_cn": "实体", "en_us": "Entity",
+      "path": "core/entity", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "一个文件管所有生物、盔甲架、方块实体。想只影响某一类，得靠贴图内容或顶点色自己判断。",
+      "note_en": "One file covers every mob, armor stand and block entity."
+    },
+    {
+      "id": "item", "category": "entity", "zh_cn": "物品", "en_us": "Item",
+      "path": "core/item", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "手持、掉落、界面图标里的物品。26.x 起独立于实体着色器——1.20.1 的老包改的是实体，搬过来要换文件。",
+      "note_en": "Held, dropped and GUI items. Separate from entity since 26.x."
+    },
+    {
+      "id": "glint", "category": "entity", "zh_cn": "附魔光效", "en_us": "Enchantment Glint",
+      "path": "core/glint", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "附魔物品上流动的紫色光。改动范围小、风险低，适合练手。",
+      "note_en": "The animated sheen on enchanted items."
+    },
+    {
+      "id": "entity_shadow", "category": "entity", "zh_cn": "实体阴影", "en_us": "Entity Shadow",
+      "path": "core/rendertype_entity_shadow", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "实体脚下那圈影子。",
+      "note_en": "The blob shadow under entities."
+    },
+    {
+      "id": "crumbling", "category": "entity", "zh_cn": "挖掘裂纹", "en_us": "Block Breaking",
+      "path": "core/rendertype_crumbling", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "挖方块时叠在上面的裂纹贴图。",
+      "note_en": "The cracking overlay while mining."
+    },
+    {
+      "id": "particle", "category": "fx", "zh_cn": "粒子", "en_us": "Particle",
+      "path": "core/particle", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "所有粒子。配合替换粒子贴图，可以只让特定粒子变样。",
+      "note_en": "All particles."
+    },
+    {
+      "id": "beacon_beam", "category": "fx", "zh_cn": "信标光柱", "en_us": "Beacon Beam",
+      "path": "core/rendertype_beacon_beam", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "信标射向天空的光柱。",
+      "note_en": "The beacon's sky beam."
+    },
+    {
+      "id": "lightning", "category": "fx", "zh_cn": "闪电", "en_us": "Lightning",
+      "path": "core/rendertype_lightning", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "闪电的多边形。",
+      "note_en": "Lightning bolt geometry."
+    },
+    {
+      "id": "end_portal", "category": "fx", "zh_cn": "末地传送门", "en_us": "End Portal",
+      "path": "core/rendertype_end_portal", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "原版唯一内置的程序化效果，多层视差星空。注意顶点钩子改的 gl_Position 会一并影响 texProj0——星空的采样坐标就是从它算出来的，位移会连星图一起拖动。",
+      "note_en": "The only procedural effect vanilla ships. Note the vertex hook also shifts texProj0, which the star field samples from."
+    },
+    {
+      "id": "sky", "category": "sky", "zh_cn": "天空", "en_us": "Sky",
+      "path": "core/sky", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "天空穹顶。改坏了也只是天空难看，最适合第一次改核心着色器。",
+      "note_en": "The sky dome. The safest place to start."
+    },
+    {
+      "id": "stars", "category": "sky", "zh_cn": "星星", "en_us": "Stars",
+      "path": "core/stars", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "夜空的星点。",
+      "note_en": "Night sky stars."
+    },
+    {
+      "id": "clouds", "category": "sky", "zh_cn": "云", "en_us": "Clouds",
+      "path": "core/clouds", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "云层。文件名在 26.3 从 rendertype_clouds 改成了 clouds，拖入老文件也认得出。",
+      "note_en": "Clouds. Renamed from rendertype_clouds in 26.3; the old file name is still recognised on import."
+    },
+    {
+      "id": "panorama", "category": "sky", "zh_cn": "主菜单全景", "en_us": "Panorama",
+      "path": "core/panorama", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "主菜单背后那圈旋转的背景。",
+      "note_en": "The rotating main-menu background."
+    },
+    {
+      "id": "world_border", "category": "sky", "zh_cn": "世界边界", "en_us": "World Border",
+      "path": "core/world_border", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "世界边界那面蓝墙。文件名在 26.3 从 rendertype_world_border 改成了 world_border。",
+      "note_en": "The world border wall. Renamed from rendertype_world_border in 26.3."
+    },
+    {
+      "id": "text", "category": "ui", "zh_cn": "文字", "en_us": "Text",
+      "path": "core/text", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "所有文字。26.3 有 IS_GUI / IS_SEE_THROUGH 等开关，可以只影响界面里的字。",
+      "note_en": "All text. 26.3 exposes IS_GUI / IS_SEE_THROUGH variants."
+    },
+    {
+      "id": "gui", "category": "ui", "zh_cn": "界面", "en_us": "GUI",
+      "path": "core/gui", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "界面底色、按钮这类纯色图元。最简单的一个，只有 Position 和 Color。",
+      "note_en": "Flat UI primitives. The simplest kind: only Position and Color."
+    },
+    {
+      "id": "lines", "category": "ui", "zh_cn": "线（碰撞箱等）", "en_us": "Lines",
+      "path": "core/rendertype_lines", "stages": ["vsh", "fsh"],
+      "vertexHook": false, "fragmentHook": true,
+      "note_zh": "碰撞箱、区块边界、结构方框、调试线共用这一个。原版给它们各自定死了顶点色，所以颜色是唯一能区分它们的依据。顶点着色器里有两处 gl_Position，自动顶点钩子不安全，只给片段钩子。",
+      "note_en": "Hitboxes, chunk borders and debug lines all share this. Fragment hook only."
+    },
+    {
+      "id": "position_color", "category": "ui", "zh_cn": "通用彩色图元", "en_us": "Position + Color",
+      "path": "core/position_color", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "各处都在用的通用图元，改它影响面很广。",
+      "note_en": "A generic primitive used in many places."
+    },
+    {
+      "id": "lightmap", "category": "system", "zh_cn": "光照贴图", "en_us": "Lightmap",
+      "path": "core/lightmap", "stages": ["fsh"],
+      "vertexHook": false, "fragmentHook": true,
+      "note_zh": "生成一张 16×16 查找表，横轴方块光、纵轴天空光。改它等于一次性改掉全世界的光照氛围，而且完全不碰几何，性能零成本。",
+      "note_en": "Generates the 16x16 light lookup table. Changes global lighting mood at zero geometry cost."
+    }
+  ]
+}

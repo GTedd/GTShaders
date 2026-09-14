@@ -1,0 +1,36 @@
+{
+  "_comment": "核心着色器示例。每个只写钩子函数，其余由 CoreShaderCodegen 从原版模板生成。加一个 = 丢一个 .fsh 到 corelib/ + 在这里加一行。",
+  "effects": [
+    { "id": "sky_gradient",    "kind": "sky",           "zh_cn": "自定义天空渐变", "en_us": "Sky Gradient" },
+    { "id": "sky_aurora",      "kind": "sky",           "zh_cn": "极光天幕",       "en_us": "Aurora Sky" },
+    { "id": "stars_twinkle",   "kind": "stars",         "zh_cn": "星星闪烁",       "en_us": "Twinkling Stars" },
+    { "id": "clouds_tint",     "kind": "clouds",        "zh_cn": "云层染色",       "en_us": "Cloud Tint" },
+
+    { "id": "lightmap_warm",   "kind": "lightmap",      "zh_cn": "暖色火光",       "en_us": "Warm Torchlight" },
+    { "id": "lightmap_cold",   "kind": "lightmap",      "zh_cn": "冷色月夜",       "en_us": "Cold Moonlight" },
+    { "id": "lightmap_flat",   "kind": "lightmap",      "zh_cn": "全亮（挖矿用）", "en_us": "Fullbright" },
+
+    { "id": "entity_rim",      "kind": "entity",        "zh_cn": "实体轮廓光",     "en_us": "Entity Rim Light" },
+    { "id": "entity_dissolve", "kind": "entity",        "zh_cn": "实体溶解",       "en_us": "Entity Dissolve" },
+    { "id": "entity_wobble",   "kind": "entity",        "zh_cn": "实体果冻抖动",   "en_us": "Entity Jelly Wobble" },
+
+    { "id": "item_breathe",    "kind": "item",          "zh_cn": "手持物品呼吸",   "en_us": "Item Breathing" },
+    { "id": "item_hologram",   "kind": "item",          "zh_cn": "物品全息",       "en_us": "Item Hologram" },
+    { "id": "item_outline",    "kind": "item",          "zh_cn": "物品描边",       "en_us": "Item Outline" },
+    { "id": "item_uvcheck",    "kind": "item",          "zh_cn": "精灵坐标自检",   "en_us": "Sprite UV Check" },
+    { "id": "glint_rainbow",   "kind": "glint",         "zh_cn": "彩虹附魔光",     "en_us": "Rainbow Glint" },
+
+    { "id": "terrain_sway",    "kind": "terrain",       "zh_cn": "地形随风摇摆",   "en_us": "Terrain Sway" },
+    { "id": "terrain_depth",   "kind": "terrain",       "zh_cn": "按高度调色",     "en_us": "Height Tint" },
+
+    { "id": "particle_tint",   "kind": "particle",      "zh_cn": "粒子染色",       "en_us": "Particle Tint" },
+    { "id": "beacon_rainbow",  "kind": "beacon_beam",   "zh_cn": "彩虹信标",       "en_us": "Rainbow Beacon" },
+    { "id": "portal_grade",    "kind": "end_portal",    "zh_cn": "传送门调色",     "en_us": "Portal Grade" },
+    { "id": "crumbling_glow",  "kind": "crumbling",     "zh_cn": "裂纹发光",       "en_us": "Glowing Cracks" },
+    { "id": "shadow_tint",     "kind": "entity_shadow", "zh_cn": "彩色实体阴影",   "en_us": "Tinted Shadow" },
+
+    { "id": "text_gradient",   "kind": "text",          "zh_cn": "文字渐变",       "en_us": "Text Gradient" },
+    { "id": "gui_tint",        "kind": "gui",           "zh_cn": "界面染色",       "en_us": "GUI Tint" },
+    { "id": "lines_xray",      "kind": "lines",         "zh_cn": "碰撞箱筛选",     "en_us": "Hitbox Filter" }
+  ]
+}

@@ -1,0 +1,198 @@
+plugins {
+    // 26.1 起 Minecraft 官方不再混淆，Fabric 随之停更 Yarn。
+    // 必须用不做重映射的新插件 net.fabricmc.fabric-loom（旧的 fabric-loom / fabric-loom-remap 是重映射版）。
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+// 「+」后面是 SemVer 构建元数据，只标注这个 jar 针对的 MC 版本，不参与版本比较。
+// jar 名与 Modrinth 版本号都用它：GTShaders-0.1.0-alpha.1+26.3-rc-2.jar
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven {
+        name = 'AliyunPublic'
+        url = 'https://maven.aliyun.com/repository/public'
+    }
+    mavenCentral()
+}
+
+// 单元测试放在独立的 source set 里，不复用 Gradle 的 test 任务：
+// Loom 把 test 接管去跑 Fabric 客户端 gametest（跑在 Knot 类加载器下），
+// 普通的 JUnit 类在那个环境里根本加载不到。这些测试只覆盖纯逻辑层
+// （参数扫描 / codegen / std140 排布），完全不需要 Minecraft 运行时，独立出来最干净。
+// 注意必须声明在 dependencies 之前，否则 unitTestImplementation 这个配置还不存在。
+sourceSets {
+    unitTest {
+        java.srcDir 'src/unitTest/java'
+        // 也带上 main 的编译 classpath（Minecraft / renderpearl / lwjgl）。
+        // 需要它的只有 tools/ 下那几个构建期工具——checkShaderLib 要直接调 LWJGL 的 Shaderc。
+        // 注意 unitTestRuntimeClasspath 里<b>没有</b> Minecraft，所以普通测试里误用
+        // Minecraft 的类会编译通过、运行时 NoClassDefFoundError。测试请继续只依赖纯逻辑类。
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    unitTestImplementation.extendsFrom implementation
+    unitTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // 注意：不再有 mappings 行，也不再用 modImplementation —— 不重映射就不需要它们
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    unitTestImplementation platform('org.junit:junit-bom:5.11.4')
+    unitTestImplementation 'org.junit.jupiter:junit-jupiter'
+    unitTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Gson 平时由 Minecraft 带进来，但单元测试不加载 Minecraft 运行时，需要显式声明
+    unitTestImplementation 'com.google.code.gson:gson:2.11.0'
+    // slf4j 同理。缺了它，任何走到 GTShaders.LOGGER 的分支都会在静态初始化时
+    // NoClassDefFoundError——而那些分支恰恰是「出错时怎么办」的容错路径，最需要测。
+    unitTestImplementation 'org.slf4j:slf4j-api:2.0.16'
+    unitTestRuntimeOnly 'org.slf4j:slf4j-simple:2.0.16'
+    // joml 同理，CameraRuntime 的矩阵反解要在没有 Minecraft 的测试里跑。
+    // 版本跟着 26.3 走；这里只用到 Matrix4f 的乘法与转置，两个小版本之间没有差别
+    unitTestRuntimeOnly 'org.joml:joml:1.10.9'
+}
+
+// 本工程所在路径含有中文。Windows 上 JVM 用 sun.jnu.encoding（本机默认 GBK）解码 classpath，
+// 而它在 JVM 初始化前就已确定，无法用 -D 覆盖，于是 Gradle 分叉出的测试进程会
+// ClassNotFoundException 找不到我们自己的类。依赖 jar 都在 ~/.gradle 这类纯 ASCII 路径下没问题，
+// 只有本工程的 class 输出受影响——所以把它们暂存到系统临时目录（ASCII）再跑。
+// 主代码与测试代码必须暂存到<b>不同</b>目录：testClassesDirs 指到哪个目录，Gradle 就会把
+// 那个目录下的所有 class 当成测试候选去扫描。混在一起的话，UI 那些继承 Minecraft Screen 的类
+// 也会被扫描，进而因为缺少 Minecraft 运行时而整体失败。
+def unitTestStageMain = new File(System.getProperty('java.io.tmpdir'), 'gtshaders-unittest/main')
+def unitTestStageTests = new File(System.getProperty('java.io.tmpdir'), 'gtshaders-unittest/tests')
+
+def stageUnitTestClasses = tasks.register('stageUnitTestClasses') {
+    dependsOn tasks.named('classes'), tasks.named('unitTestClasses')
+    doLast {
+        project.sync {
+            from sourceSets.main.output
+            into unitTestStageMain
+        }
+        project.sync {
+            from sourceSets.unitTest.output
+            into unitTestStageTests
+        }
+    }
+}
+
+tasks.register('unitTest', Test) {
+    description = '运行不依赖 Minecraft 运行时的纯逻辑单元测试'
+    group = 'verification'
+    dependsOn stageUnitTestClasses
+    testClassesDirs = files(unitTestStageTests)
+    classpath = files(unitTestStageTests, unitTestStageMain) + configurations.unitTestRuntimeClasspath
+    // tools/ 下是构建期工具，不是测试。必须排除：JUnit 会加载 testClassesDirs 里的<b>每一个</b>
+    // class 去找 @Test，而 ShaderLibCompileCheck 引用了 LWJGL —— 那些类只在
+    // checkShaderLib 的 classpath 上，在这里加载会让整个测试发现阶段直接失败。
+    exclude '**/tools/**'
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        exceptionFormat = 'full'
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('unitTest')
+    // 素材库必须真的编得过，这是这个工程最核心的一条质量门。
+    // lightmap_flat 里那个「拿 GLSL 关键字 flat 当变量名」的 bug 藏了很久没被发现，
+    // 就是因为在这之前素材库从来没被真正编译过——单元测试只验结构，验不出语法。
+    dependsOn tasks.named('checkShaderLib')
+}
+
+// 目标版本三件套，真源是 gradle.properties。processResources 把它展开给 TargetVersion。
+def targetVersion = [
+        minecraft_version   : project.minecraft_version,
+        resource_pack_format: project.resource_pack_format,
+        data_pack_format    : project.data_pack_format,
+]
+
+// 把内置效果库编译成工程根目录下的 shaderlib/——一个可以直接加载的 26.3 资源包。
+// 跑在 unitTest 的 classpath 上（不需要 Minecraft 运行时），同样要用 ASCII 暂存目录绕开
+// 中文路径下 sun.jnu.encoding 的坑，理由见上面 unitTest 那一段。
+// 产物先落到 ASCII 暂存目录再同步回来：命令行参数同样要过 sun.jnu.encoding，
+// 直接把含中文的 projectDir 传给子进程会被 GBK 二次解码搞坏。
+def shaderLibStage = new File(System.getProperty('java.io.tmpdir'), 'gtshaders-shaderlib')
+
+// 核心着色器的注入探针：拿真实原版模板，给每个种类 × 每个版本生成一遍，供 coreshadercheck 真编译。
+// 落在临时目录而不是工程里——产物里含有原版源码，不能入库。
+tasks.register('generateCoreProbes', JavaExec) {
+    description = '用原版模板生成全部核心着色器种类的注入探针（供编译校验）'
+    group = 'verification'
+    dependsOn stageUnitTestClasses
+    classpath = files(unitTestStageTests, unitTestStageMain) + configurations.unitTestRuntimeClasspath
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.CoreShaderProbeGenerator'
+    args new File(System.getProperty('java.io.tmpdir'), 'gtshaders-coreprobe').absolutePath
+}
+
+tasks.register('generateShaderLib', JavaExec) {
+    description = '把内置效果库生成为 26.3 格式的资源包（shaderlib/）'
+    group = 'build'
+    dependsOn stageUnitTestClasses
+    classpath = files(unitTestStageTests, unitTestStageMain) + configurations.unitTestRuntimeClasspath
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.ShaderLibGenerator'
+    args shaderLibStage.absolutePath
+    doLast {
+        project.sync {
+            from shaderLibStage
+            into project.file('shaderlib')
+        }
+    }
+}
+
+// 拿游戏自己用的 ShaderC 把素材库整个编译一遍。
+// classpath 要带 main.compileClasspath（renderpearl / lwjgl 的类）和 minecraftNatives
+// （shaderc 的 .dll，LWJGL 会自己从 jar 里提取）。
+tasks.register('checkShaderLib', JavaExec) {
+    description = '用游戏自带的 ShaderC 编译整个素材库，确认在 26.3 上真的能用'
+    group = 'verification'
+    dependsOn stageUnitTestClasses, tasks.named('generateShaderLib')
+    classpath = files(unitTestStageTests, unitTestStageMain) +
+            configurations.unitTestRuntimeClasspath + sourceSets.main.compileClasspath +
+            configurations.minecraftNatives
+    mainClass = 'mc.GTedd.cn.gtshaders.tools.ShaderLibCompileCheck'
+    args project.file('shaderlib').absolutePath
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.properties targetVersion
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+    filesMatching('gtshaders-target.properties') {
+        expand targetVersion
+    }
+}
+
+// Minecraft 26.2 起要求 Java 25（Loom 会在配置期强校验），不是常见的 21
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = 'UTF-8'
+    it.options.release = 25
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+}
+
+// 许可证与第三方声明随 jar 一起分发：MIT 以及被改编项目的 MIT 都要求副本里保留版权与许可声明。
+// 加后缀是 Fabric 的惯例，免得和别的 mod 的同名文件在整合包工具里撞名。
+tasks.withType(Jar).configureEach {
+    from('LICENSE') { rename { "${it}_${project.archives_base_name}" } }
+    from('THIRD_PARTY_NOTICES.md') { rename { "THIRD_PARTY_NOTICES_${project.archives_base_name}.md" } }
+}

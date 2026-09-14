@@ -1,0 +1,47 @@
+# ---- 构建产物 ----
+build/
+out/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ---- Loom 的开发客户端运行目录 ----
+run/
+
+# ---- 生成物：`./gradlew generateShaderLib` 可随时重新生成 ----
+shaderlib/
+
+# ---- Local-only material, never published ----
+# Design notes, research and tutorials stay on the author's machine.
+# docs/vanilla/<version>/ holds shaders extracted from client.jar (Mojang's proprietary assets);
+# when present, checkShaderLib and RealVanillaTest also verify core shader variants against it.
+/docs/
+# Third-party packs and derived reference packs
+/Reference/
+/refpacks/
+# Development scripts
+/tools/
+# UI design reference screenshot
+mastergo-工作台截图.png
+
+# ---- IDE ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# ---- Python 工具 ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- 系统 / 编辑器杂项 ----
+.DS_Store
+Thumbs.db
+*.swp
+*~

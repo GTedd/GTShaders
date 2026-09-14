@@ -1,0 +1,1078 @@
+{
+  "_comment": "效果库索引。加一个效果 = 丢一个 .fsh 到对应分类目录 + 在这里加一行。generateShaderLib 会核对索引与磁盘是否一一对应。",
+  "categories": [
+    {
+      "id": "combat",
+      "zh_cn": "战斗与状态",
+      "en_us": "Combat & Status"
+    },
+    {
+      "id": "feedback",
+      "zh_cn": "战斗反馈",
+      "en_us": "Combat Feedback"
+    },
+    {
+      "id": "field",
+      "zh_cn": "领域与能量",
+      "en_us": "Fields & Energy"
+    },
+    {
+      "id": "emitter",
+      "zh_cn": "载体特效",
+      "en_us": "Emitter FX"
+    },
+    {
+      "id": "weather",
+      "zh_cn": "环境与天气",
+      "en_us": "Environment & Weather"
+    },
+    {
+      "id": "retro",
+      "zh_cn": "复古与风格化",
+      "en_us": "Retro & Stylized"
+    },
+    {
+      "id": "lens",
+      "zh_cn": "镜头与摄影",
+      "en_us": "Lens & Camera"
+    },
+    {
+      "id": "color",
+      "zh_cn": "调色",
+      "en_us": "Color Grading"
+    },
+    {
+      "id": "glitch",
+      "zh_cn": "故障与数字",
+      "en_us": "Glitch & Digital"
+    },
+    {
+      "id": "transition",
+      "zh_cn": "转场与过场",
+      "en_us": "Transitions"
+    },
+    {
+      "id": "camera",
+      "zh_cn": "运镜与冲击",
+      "en_us": "Camera & Impact"
+    },
+    {
+      "id": "magic",
+      "zh_cn": "魔法与元素",
+      "en_us": "Magic & Elements"
+    },
+    {
+      "id": "scifi",
+      "zh_cn": "科幻与界面",
+      "en_us": "Sci-Fi & HUD"
+    },
+    {
+      "id": "light",
+      "zh_cn": "光影与体积",
+      "en_us": "Light & Volumetric"
+    },
+    {
+      "id": "horror",
+      "zh_cn": "恐怖与心理",
+      "en_us": "Horror & Psyche"
+    },
+    {
+      "id": "entity",
+      "zh_cn": "逐实体（轮廓）",
+      "en_us": "Per-Entity (Outline)",
+      "outline": true
+    }
+  ],
+  "effects": [
+    {
+      "id": "bladeflash",
+      "category": "combat",
+      "zh_cn": "刀光拖尾",
+      "en_us": "Blade Flash"
+    },
+    {
+      "id": "flashbang",
+      "category": "combat",
+      "zh_cn": "闪光弹",
+      "en_us": "Flashbang"
+    },
+    {
+      "id": "poison",
+      "category": "combat",
+      "zh_cn": "中毒",
+      "en_us": "Poison"
+    },
+    {
+      "id": "wither",
+      "category": "combat",
+      "zh_cn": "凋零",
+      "en_us": "Wither"
+    },
+    {
+      "id": "burning",
+      "category": "combat",
+      "zh_cn": "灼烧",
+      "en_us": "Burning"
+    },
+    {
+      "id": "freeze",
+      "category": "combat",
+      "zh_cn": "冰冻",
+      "en_us": "Freeze"
+    },
+    {
+      "id": "blindness",
+      "category": "combat",
+      "zh_cn": "失明",
+      "en_us": "Blindness"
+    },
+    {
+      "id": "nightvision",
+      "category": "combat",
+      "zh_cn": "夜视仪",
+      "en_us": "Night Vision"
+    },
+    {
+      "id": "lowhealth",
+      "category": "combat",
+      "zh_cn": "濒死",
+      "en_us": "Low Health"
+    },
+    {
+      "id": "shielded",
+      "category": "combat",
+      "zh_cn": "能量护盾",
+      "en_us": "Energy Shield"
+    },
+    {
+      "id": "invisible",
+      "category": "combat",
+      "zh_cn": "隐身折射",
+      "en_us": "Invisibility"
+    },
+    {
+      "id": "slowness",
+      "category": "combat",
+      "zh_cn": "迟缓",
+      "en_us": "Slowness"
+    },
+    {
+      "id": "berserk",
+      "category": "combat",
+      "zh_cn": "狂暴",
+      "en_us": "Berserk"
+    },
+    {
+      "id": "regeneration",
+      "category": "combat",
+      "zh_cn": "生命恢复",
+      "en_us": "Regeneration"
+    },
+    {
+      "id": "hitmarker",
+      "category": "feedback",
+      "zh_cn": "命中标记",
+      "en_us": "Hit Marker"
+    },
+    {
+      "id": "damageflash",
+      "category": "feedback",
+      "zh_cn": "受击闪红",
+      "en_us": "Damage Flash"
+    },
+    {
+      "id": "killconfirm",
+      "category": "feedback",
+      "zh_cn": "击杀确认",
+      "en_us": "Kill Confirm"
+    },
+    {
+      "id": "killburst",
+      "category": "feedback",
+      "zh_cn": "击杀冲击",
+      "en_us": "Kill Burst"
+    },
+    {
+      "id": "killtext",
+      "category": "feedback",
+      "zh_cn": "击杀文字",
+      "en_us": "Kill Text"
+    },
+    {
+      "id": "killicon_texture",
+      "category": "feedback",
+      "zh_cn": "贴图击杀图标",
+      "en_us": "Texture Kill Icon"
+    },
+    {
+      "id": "scrolling_killicon",
+      "category": "feedback",
+      "zh_cn": "滚动击杀图标",
+      "en_us": "Scrolling Kill Icon"
+    },
+    {
+      "id": "killtype_icon",
+      "category": "feedback",
+      "zh_cn": "分类击杀图标",
+      "en_us": "Kill Type Icon"
+    },
+    {
+      "id": "blackhole",
+      "category": "field",
+      "zh_cn": "黑洞",
+      "en_us": "Black Hole"
+    },
+    {
+      "id": "singularity",
+      "category": "field",
+      "zh_cn": "奇点炸弹",
+      "en_us": "Singularity Bomb"
+    },
+    {
+      "id": "domain",
+      "category": "field",
+      "zh_cn": "领域场",
+      "en_us": "Domain Field"
+    },
+    {
+      "id": "forcefield",
+      "category": "field",
+      "zh_cn": "力场泡",
+      "en_us": "Force Field"
+    },
+    {
+      "id": "portal",
+      "category": "field",
+      "zh_cn": "传送门",
+      "en_us": "Portal"
+    },
+    {
+      "id": "timestop",
+      "category": "field",
+      "zh_cn": "时间静止",
+      "en_us": "Time Stop"
+    },
+    {
+      "id": "shockwave",
+      "category": "field",
+      "zh_cn": "冲击波",
+      "en_us": "Shockwave"
+    },
+    {
+      "id": "gravitywave",
+      "category": "field",
+      "zh_cn": "引力波",
+      "en_us": "Gravitational Wave"
+    },
+    {
+      "id": "lightning",
+      "category": "field",
+      "zh_cn": "电弧",
+      "en_us": "Lightning Arc"
+    },
+    {
+      "id": "barrier",
+      "category": "field",
+      "zh_cn": "符文结界",
+      "en_us": "Rune Barrier"
+    },
+    {
+      "id": "levitate",
+      "category": "field",
+      "zh_cn": "失重悬浮",
+      "en_us": "Levitation"
+    },
+    {
+      "id": "sonar",
+      "category": "field",
+      "zh_cn": "声呐扫描",
+      "en_us": "Sonar Ping"
+    },
+    {
+      "id": "laserstrike",
+      "category": "field",
+      "zh_cn": "天降激光",
+      "en_us": "Laser Strike"
+    },
+    {
+      "id": "omnipull",
+      "category": "field",
+      "zh_cn": "全向引力",
+      "en_us": "Omni Pull"
+    },
+    {
+      "id": "irpulse",
+      "category": "field",
+      "zh_cn": "红外探测",
+      "en_us": "IR Pulse"
+    },
+    {
+      "id": "fx_light",
+      "category": "emitter",
+      "zh_cn": "载体光源",
+      "en_us": "Emitter Light"
+    },
+    {
+      "id": "fx_bloom",
+      "category": "emitter",
+      "zh_cn": "载体闪光",
+      "en_us": "Emitter Bloom"
+    },
+    {
+      "id": "fx_lightning",
+      "category": "emitter",
+      "zh_cn": "载体闪电",
+      "en_us": "Emitter Lightning"
+    },
+    {
+      "id": "fx_shockwave",
+      "category": "emitter",
+      "zh_cn": "载体冲击波",
+      "en_us": "Emitter Shockwave"
+    },
+    {
+      "id": "fx_camerashake",
+      "category": "emitter",
+      "zh_cn": "载体震屏",
+      "en_us": "Emitter Camera Shake"
+    },
+    {
+      "id": "underwater",
+      "category": "weather",
+      "zh_cn": "水下",
+      "en_us": "Underwater"
+    },
+    {
+      "id": "lava",
+      "category": "weather",
+      "zh_cn": "岩浆",
+      "en_us": "Lava"
+    },
+    {
+      "id": "rain",
+      "category": "weather",
+      "zh_cn": "暴雨",
+      "en_us": "Heavy Rain"
+    },
+    {
+      "id": "sandstorm",
+      "category": "weather",
+      "zh_cn": "沙尘暴",
+      "en_us": "Sandstorm"
+    },
+    {
+      "id": "fog",
+      "category": "weather",
+      "zh_cn": "迷雾",
+      "en_us": "Volumetric Fog"
+    },
+    {
+      "id": "aurora",
+      "category": "weather",
+      "zh_cn": "极光",
+      "en_us": "Aurora"
+    },
+    {
+      "id": "heathaze",
+      "category": "weather",
+      "zh_cn": "热浪扭曲",
+      "en_us": "Heat Haze"
+    },
+    {
+      "id": "snow",
+      "category": "weather",
+      "zh_cn": "落雪",
+      "en_us": "Snowfall"
+    },
+    {
+      "id": "thunderflash",
+      "category": "weather",
+      "zh_cn": "雷暴闪光",
+      "en_us": "Thunder Flash"
+    },
+    {
+      "id": "voidend",
+      "category": "weather",
+      "zh_cn": "末地虚空",
+      "en_us": "The Void"
+    },
+    {
+      "id": "sakura",
+      "category": "weather",
+      "zh_cn": "樱花",
+      "en_us": "Sakura"
+    },
+    {
+      "id": "dusk",
+      "category": "weather",
+      "zh_cn": "蓝调",
+      "en_us": "Dusk"
+    },
+    {
+      "id": "crt",
+      "category": "retro",
+      "zh_cn": "CRT 显像管",
+      "en_us": "CRT Monitor"
+    },
+    {
+      "id": "vhs",
+      "category": "retro",
+      "zh_cn": "VHS 录像带",
+      "en_us": "VHS Tape"
+    },
+    {
+      "id": "pixelart",
+      "category": "retro",
+      "zh_cn": "像素化",
+      "en_us": "Pixel Art"
+    },
+    {
+      "id": "ascii",
+      "category": "retro",
+      "zh_cn": "ASCII 艺术",
+      "en_us": "ASCII Art"
+    },
+    {
+      "id": "sketch",
+      "category": "retro",
+      "zh_cn": "铅笔素描",
+      "en_us": "Pencil Sketch"
+    },
+    {
+      "id": "oilpaint",
+      "category": "retro",
+      "zh_cn": "油画",
+      "en_us": "Oil Painting"
+    },
+    {
+      "id": "halftone",
+      "category": "retro",
+      "zh_cn": "漫画网点",
+      "en_us": "Halftone"
+    },
+    {
+      "id": "neon",
+      "category": "retro",
+      "zh_cn": "霓虹描边",
+      "en_us": "Neon Outline"
+    },
+    {
+      "id": "posterize",
+      "category": "retro",
+      "zh_cn": "色调分离",
+      "en_us": "Posterize"
+    },
+    {
+      "id": "filmgrain",
+      "category": "retro",
+      "zh_cn": "胶片颗粒",
+      "en_us": "Film Grain"
+    },
+    {
+      "id": "depthoutline",
+      "category": "retro",
+      "zh_cn": "深度描边",
+      "en_us": "Depth Outline"
+    },
+    {
+      "id": "synthwave",
+      "category": "retro",
+      "zh_cn": "合成器浪潮",
+      "en_us": "Synthwave"
+    },
+    {
+      "id": "synthwave_classic",
+      "category": "retro",
+      "zh_cn": "合成器浪潮·经典",
+      "en_us": "Synthwave Classic"
+    },
+    {
+      "id": "dof",
+      "category": "lens",
+      "zh_cn": "景深",
+      "en_us": "Depth of Field"
+    },
+    {
+      "id": "motionblur",
+      "category": "lens",
+      "zh_cn": "运动模糊",
+      "en_us": "Motion Blur"
+    },
+    {
+      "id": "fisheye",
+      "category": "lens",
+      "zh_cn": "鱼眼",
+      "en_us": "Fisheye"
+    },
+    {
+      "id": "barrel",
+      "category": "lens",
+      "zh_cn": "镜头畸变",
+      "en_us": "Lens Distortion"
+    },
+    {
+      "id": "bloom",
+      "category": "lens",
+      "zh_cn": "泛光",
+      "en_us": "Bloom"
+    },
+    {
+      "id": "lensflare",
+      "category": "lens",
+      "zh_cn": "镜头光晕",
+      "en_us": "Lens Flare"
+    },
+    {
+      "id": "vignette",
+      "category": "lens",
+      "zh_cn": "暗角",
+      "en_us": "Vignette"
+    },
+    {
+      "id": "chromatic",
+      "category": "lens",
+      "zh_cn": "色差",
+      "en_us": "Chromatic Aberration"
+    },
+    {
+      "id": "lensdirt",
+      "category": "lens",
+      "zh_cn": "镜头污渍",
+      "en_us": "Lens Dirt"
+    },
+    {
+      "id": "shutter",
+      "category": "lens",
+      "zh_cn": "快门",
+      "en_us": "Shutter"
+    },
+    {
+      "id": "cinematic",
+      "category": "color",
+      "zh_cn": "电影调色",
+      "en_us": "Cinematic Grade"
+    },
+    {
+      "id": "whitebalance",
+      "category": "color",
+      "zh_cn": "白平衡",
+      "en_us": "White Balance"
+    },
+    {
+      "id": "splittone",
+      "category": "color",
+      "zh_cn": "分离色调",
+      "en_us": "Split Toning"
+    },
+    {
+      "id": "duotone",
+      "category": "color",
+      "zh_cn": "双色调",
+      "en_us": "Duotone"
+    },
+    {
+      "id": "invert",
+      "category": "color",
+      "zh_cn": "反相",
+      "en_us": "Invert"
+    },
+    {
+      "id": "threshold",
+      "category": "color",
+      "zh_cn": "阈值化",
+      "en_us": "Threshold"
+    },
+    {
+      "id": "thermal",
+      "category": "color",
+      "zh_cn": "热成像",
+      "en_us": "Thermal Vision"
+    },
+    {
+      "id": "huerotate",
+      "category": "color",
+      "zh_cn": "色相旋转",
+      "en_us": "Hue Rotate"
+    },
+    {
+      "id": "glitch",
+      "category": "glitch",
+      "zh_cn": "数字故障",
+      "en_us": "Digital Glitch"
+    },
+    {
+      "id": "datamosh",
+      "category": "glitch",
+      "zh_cn": "数据损坏",
+      "en_us": "Datamosh"
+    },
+    {
+      "id": "scandecode",
+      "category": "glitch",
+      "zh_cn": "扫描解码",
+      "en_us": "Scan Decode"
+    },
+    {
+      "id": "hologram",
+      "category": "glitch",
+      "zh_cn": "全息投影",
+      "en_us": "Hologram"
+    },
+    {
+      "id": "pixelsort",
+      "category": "glitch",
+      "zh_cn": "像素排序",
+      "en_us": "Pixel Sort"
+    },
+    {
+      "id": "signalloss",
+      "category": "glitch",
+      "zh_cn": "信号丢失",
+      "en_us": "Signal Loss"
+    },
+    {
+      "id": "screencrack",
+      "category": "glitch",
+      "zh_cn": "屏幕裂纹",
+      "en_us": "Screen Crack"
+    },
+    {
+      "id": "interlace",
+      "category": "glitch",
+      "zh_cn": "隔行错位",
+      "en_us": "Interlace Tear"
+    },
+    {
+      "id": "wipecircle",
+      "category": "transition",
+      "zh_cn": "圆形擦除",
+      "en_us": "Circle Wipe"
+    },
+    {
+      "id": "wipeblinds",
+      "category": "transition",
+      "zh_cn": "百叶窗",
+      "en_us": "Blinds Wipe"
+    },
+    {
+      "id": "radialsweep",
+      "category": "transition",
+      "zh_cn": "径向扫",
+      "en_us": "Radial Sweep"
+    },
+    {
+      "id": "stripepush",
+      "category": "transition",
+      "zh_cn": "条纹推移",
+      "en_us": "Stripe Push"
+    },
+    {
+      "id": "dissolvenoise",
+      "category": "transition",
+      "zh_cn": "噪声溶解",
+      "en_us": "Noise Dissolve"
+    },
+    {
+      "id": "inkbleed",
+      "category": "transition",
+      "zh_cn": "墨迹晕染",
+      "en_us": "Ink Bleed"
+    },
+    {
+      "id": "pixelmelt",
+      "category": "transition",
+      "zh_cn": "像素熔解",
+      "en_us": "Pixel Melt"
+    },
+    {
+      "id": "flashcut",
+      "category": "transition",
+      "zh_cn": "白闪切",
+      "en_us": "Flash Cut"
+    },
+    {
+      "id": "glitchcut",
+      "category": "transition",
+      "zh_cn": "故障切",
+      "en_us": "Glitch Cut"
+    },
+    {
+      "id": "zoompunch",
+      "category": "transition",
+      "zh_cn": "缩放冲刺切",
+      "en_us": "Zoom Punch"
+    },
+    {
+      "id": "handheld",
+      "category": "camera",
+      "zh_cn": "手持晃动",
+      "en_us": "Handheld Shake"
+    },
+    {
+      "id": "hitshake",
+      "category": "camera",
+      "zh_cn": "命中震屏",
+      "en_us": "Hit Shake"
+    },
+    {
+      "id": "recoilkick",
+      "category": "camera",
+      "zh_cn": "后坐力",
+      "en_us": "Recoil Kick"
+    },
+    {
+      "id": "sprintrush",
+      "category": "camera",
+      "zh_cn": "冲刺加速",
+      "en_us": "Sprint Rush"
+    },
+    {
+      "id": "speedlines",
+      "category": "camera",
+      "zh_cn": "速度线",
+      "en_us": "Speed Lines"
+    },
+    {
+      "id": "dollyzoom",
+      "category": "camera",
+      "zh_cn": "滑动变焦",
+      "en_us": "Dolly Zoom"
+    },
+    {
+      "id": "whippan",
+      "category": "camera",
+      "zh_cn": "甩镜",
+      "en_us": "Whip Pan"
+    },
+    {
+      "id": "beatpulse",
+      "category": "camera",
+      "zh_cn": "节拍脉冲",
+      "en_us": "Beat Pulse"
+    },
+    {
+      "id": "slowmotion",
+      "category": "camera",
+      "zh_cn": "慢动作拖影",
+      "en_us": "Slow-Mo Trail"
+    },
+    {
+      "id": "stutter",
+      "category": "camera",
+      "zh_cn": "抽帧顿挫",
+      "en_us": "Stutter"
+    },
+    {
+      "id": "anamorphic",
+      "category": "camera",
+      "zh_cn": "变形宽银幕",
+      "en_us": "Anamorphic"
+    },
+    {
+      "id": "firebreath",
+      "category": "magic",
+      "zh_cn": "烈焰吐息",
+      "en_us": "Fire Breath"
+    },
+    {
+      "id": "frostspread",
+      "category": "magic",
+      "zh_cn": "冰霜蔓延",
+      "en_us": "Frost Spread"
+    },
+    {
+      "id": "thundercharge",
+      "category": "magic",
+      "zh_cn": "雷电充能",
+      "en_us": "Thunder Charge"
+    },
+    {
+      "id": "venomcorrode",
+      "category": "magic",
+      "zh_cn": "剧毒腐蚀",
+      "en_us": "Venom Corrosion"
+    },
+    {
+      "id": "holybeam",
+      "category": "magic",
+      "zh_cn": "神圣光柱",
+      "en_us": "Holy Beam"
+    },
+    {
+      "id": "shadowcreep",
+      "category": "magic",
+      "zh_cn": "暗影侵蚀",
+      "en_us": "Shadow Creep"
+    },
+    {
+      "id": "healpulse",
+      "category": "magic",
+      "zh_cn": "治疗涟漪",
+      "en_us": "Heal Pulse"
+    },
+    {
+      "id": "teleportblink",
+      "category": "magic",
+      "zh_cn": "传送闪烁",
+      "en_us": "Teleport Blink"
+    },
+    {
+      "id": "summoncircle",
+      "category": "magic",
+      "zh_cn": "召唤法阵",
+      "en_us": "Summon Circle"
+    },
+    {
+      "id": "manaflow",
+      "category": "magic",
+      "zh_cn": "魔力潮汐",
+      "en_us": "Mana Flow"
+    },
+    {
+      "id": "curseeye",
+      "category": "magic",
+      "zh_cn": "诅咒之眼",
+      "en_us": "Curse Eye"
+    },
+    {
+      "id": "targetlock",
+      "category": "scifi",
+      "zh_cn": "目标锁定",
+      "en_us": "Target Lock"
+    },
+    {
+      "id": "mechhud",
+      "category": "scifi",
+      "zh_cn": "机甲 HUD",
+      "en_us": "Mech HUD"
+    },
+    {
+      "id": "radargrid",
+      "category": "scifi",
+      "zh_cn": "雷达网格",
+      "en_us": "Radar Grid"
+    },
+    {
+      "id": "scanlock",
+      "category": "scifi",
+      "zh_cn": "扫描建模",
+      "en_us": "Scan Lock"
+    },
+    {
+      "id": "datastream",
+      "category": "scifi",
+      "zh_cn": "数据流",
+      "en_us": "Data Stream"
+    },
+    {
+      "id": "coderain",
+      "category": "scifi",
+      "zh_cn": "代码雨",
+      "en_us": "Code Rain"
+    },
+    {
+      "id": "shieldhit",
+      "category": "scifi",
+      "zh_cn": "护盾击中",
+      "en_us": "Shield Impact"
+    },
+    {
+      "id": "empburst",
+      "category": "scifi",
+      "zh_cn": "EMP 脉冲",
+      "en_us": "EMP Burst"
+    },
+    {
+      "id": "warpdrive",
+      "category": "scifi",
+      "zh_cn": "曲速跃迁",
+      "en_us": "Warp Drive"
+    },
+    {
+      "id": "dangeralert",
+      "category": "scifi",
+      "zh_cn": "危险警报",
+      "en_us": "Danger Alert"
+    },
+    {
+      "id": "systemreboot",
+      "category": "scifi",
+      "zh_cn": "系统重启",
+      "en_us": "System Reboot"
+    },
+    {
+      "id": "matrix",
+      "category": "scifi",
+      "zh_cn": "黑客帝国矩阵",
+      "en_us": "Matrix"
+    },
+    {
+      "id": "terminator",
+      "category": "scifi",
+      "zh_cn": "终结者 T-800",
+      "en_us": "Terminator T-800"
+    },
+    {
+      "id": "godray",
+      "category": "light",
+      "zh_cn": "上帝之光",
+      "en_us": "God Rays"
+    },
+    {
+      "id": "sunstreak",
+      "category": "light",
+      "zh_cn": "星芒",
+      "en_us": "Sun Streak"
+    },
+    {
+      "id": "glowbleed",
+      "category": "light",
+      "zh_cn": "辉光溢出",
+      "en_us": "Glow Bleed"
+    },
+    {
+      "id": "prismshift",
+      "category": "light",
+      "zh_cn": "棱镜色散",
+      "en_us": "Prism Shift"
+    },
+    {
+      "id": "caustics",
+      "category": "light",
+      "zh_cn": "水面焦散",
+      "en_us": "Caustics"
+    },
+    {
+      "id": "spotlight",
+      "category": "light",
+      "zh_cn": "舞台聚光",
+      "en_us": "Stage Spotlight"
+    },
+    {
+      "id": "firelight",
+      "category": "light",
+      "zh_cn": "火光摇曳",
+      "en_us": "Firelight Flicker"
+    },
+    {
+      "id": "emberglow",
+      "category": "light",
+      "zh_cn": "余烬飞舞",
+      "en_us": "Ember Glow"
+    },
+    {
+      "id": "bioluminesce",
+      "category": "light",
+      "zh_cn": "生物荧光",
+      "en_us": "Bioluminescence"
+    },
+    {
+      "id": "moonhaze",
+      "category": "light",
+      "zh_cn": "月晕",
+      "en_us": "Moon Haze"
+    },
+    {
+      "id": "daycycle",
+      "category": "light",
+      "zh_cn": "日夜轮转",
+      "en_us": "Day Cycle"
+    },
+    {
+      "id": "heartbeat",
+      "category": "horror",
+      "zh_cn": "心跳",
+      "en_us": "Heartbeat"
+    },
+    {
+      "id": "creepdark",
+      "category": "horror",
+      "zh_cn": "黑暗逼近",
+      "en_us": "Creeping Dark"
+    },
+    {
+      "id": "ghostflash",
+      "category": "horror",
+      "zh_cn": "鬼影闪现",
+      "en_us": "Ghost Flash"
+    },
+    {
+      "id": "hallucinate",
+      "category": "horror",
+      "zh_cn": "幻觉扭曲",
+      "en_us": "Hallucination"
+    },
+    {
+      "id": "insanity",
+      "category": "horror",
+      "zh_cn": "精神污染",
+      "en_us": "Insanity"
+    },
+    {
+      "id": "bloodmist",
+      "category": "horror",
+      "zh_cn": "血雾",
+      "en_us": "Blood Mist"
+    },
+    {
+      "id": "tinnitus",
+      "category": "horror",
+      "zh_cn": "耳鸣",
+      "en_us": "Tinnitus"
+    },
+    {
+      "id": "drunk",
+      "category": "horror",
+      "zh_cn": "醉酒",
+      "en_us": "Drunk"
+    },
+    {
+      "id": "kaleidoscope",
+      "category": "horror",
+      "zh_cn": "万花筒",
+      "en_us": "Kaleidoscope"
+    },
+    {
+      "id": "hypnospiral",
+      "category": "horror",
+      "zh_cn": "催眠螺旋",
+      "en_us": "Hypno Spiral"
+    },
+    {
+      "id": "silenthill",
+      "category": "horror",
+      "zh_cn": "寂静岭表里",
+      "en_us": "Silent Hill"
+    },
+    {
+      "id": "energyshell",
+      "category": "entity",
+      "zh_cn": "能量外壳",
+      "en_us": "Energy Shell"
+    },
+    {
+      "id": "dissolve",
+      "category": "entity",
+      "zh_cn": "实体溶解",
+      "en_us": "Entity Dissolve"
+    },
+    {
+      "id": "heatsignature",
+      "category": "entity",
+      "zh_cn": "热成像标记",
+      "en_us": "Heat Signature"
+    },
+    {
+      "id": "refraction",
+      "category": "entity",
+      "zh_cn": "折射隐身",
+      "en_us": "Refractive Cloak"
+    },
+    {
+      "id": "teamsplit",
+      "category": "entity",
+      "zh_cn": "阵营分流",
+      "en_us": "Team Split"
+    }
+  ]
+}

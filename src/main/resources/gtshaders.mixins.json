@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "mc.GTedd.cn.gtshaders.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "BindModeInputMixin",
+    "BindModeScrollMixin",
+    "FirstPersonHandsAndItemsRendererMixin",
+    "GameRendererMixin",
+    "ItemStackRenderStateMixin",
+    "PipelineCacheAccessor",
+    "PostChainAccessor",
+    "PostPassAccessor",
+    "PostPassBufferUsageMixin",
+    "PostPassProfileMixin",
+    "RenderSystemAccessor",
+    "ShaderConfigsMixin",
+    "ShaderManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

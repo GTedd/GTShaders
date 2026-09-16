@@ -20,8 +20,7 @@ shaderlib/
 /refpacks/
 # Development scripts
 /tools/
-# UI design reference screenshot
-mastergo-工作台截图.png
+.tmp/
 
 # ---- IDE ----
 .idea/

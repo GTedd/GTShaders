@@ -24,6 +24,13 @@
       "note_en": "Non-batched block rendering."
     },
     {
+      "id": "water_mask", "category": "world", "zh_cn": "水面遮罩", "en_us": "Water Mask",
+      "path": "core/rendertype_water_mask", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "水体渲染前打的深度遮罩，本身不出颜色。改视角投影时必须跟着一起改，否则水面的裁剪位置和地形对不上，水下会露出一圈空洞。",
+      "note_en": "The depth mask drawn before water. It writes no color, but any change to the view projection must be applied here too, or the water clip no longer lines up with terrain."
+    },
+    {
       "id": "entity", "category": "entity", "zh_cn": "实体", "en_us": "Entity",
       "path": "core/entity", "stages": ["vsh", "fsh"],
       "vertexHook": true, "fragmentHook": true,
@@ -57,6 +64,20 @@
       "vertexHook": true, "fragmentHook": true,
       "note_zh": "挖方块时叠在上面的裂纹贴图。",
       "note_en": "The cracking overlay while mining."
+    },
+    {
+      "id": "leash", "category": "entity", "zh_cn": "拴绳", "en_us": "Leash",
+      "path": "core/rendertype_leash", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "栓绳结和船桨绳。顶点少、几乎没人改，但它和实体走的是两套着色器——只改实体的话，拴绳会留在原来的位置上。",
+      "note_en": "Lead ropes. Few vertices and rarely touched, but it is a separate shader from entities: change only the entity one and the rope stays behind."
+    },
+    {
+      "id": "entity_outline", "category": "entity", "zh_cn": "发光实体轮廓", "en_us": "Entity Outline",
+      "path": "core/rendertype_outline", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "发光效果（光灵箭、旁观队友）先把实体画进一张离屏图，再由后处理描边。这里画的是那一遍，不是描边本身。",
+      "note_en": "Glowing entities are first drawn into an offscreen buffer, which a post effect then outlines. This is that first pass, not the outline itself."
     },
     {
       "id": "particle", "category": "fx", "zh_cn": "粒子", "en_us": "Particle",
@@ -148,6 +169,13 @@
       "vertexHook": true, "fragmentHook": true,
       "note_zh": "各处都在用的通用图元，改它影响面很广。",
       "note_en": "A generic primitive used in many places."
+    },
+    {
+      "id": "position_tex_color", "category": "ui", "zh_cn": "通用贴图彩色图元", "en_us": "Position + Tex + Color",
+      "path": "core/position_tex_color", "stages": ["vsh", "fsh"],
+      "vertexHook": true, "fragmentHook": true,
+      "note_zh": "带贴图和顶点色的通用图元。地图画框、末影龙死亡光效等零散渲染走这里。",
+      "note_en": "A generic textured primitive with vertex color, used by map frames, the dragon death beam and other odds and ends."
     },
     {
       "id": "lightmap", "category": "system", "zh_cn": "光照贴图", "en_us": "Lightmap",

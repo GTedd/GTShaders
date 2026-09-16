@@ -123,7 +123,7 @@ class CodegenTest {
 
     @Test
     void 仍是version330并require扩展而不是升到450() {
-        // 逐字核对过 26.3-pre-2 与 rc-2 的 assets/minecraft/shaders/：全部 core 与 post
+        // 逐字核对过 26.3-pre-2、rc-2 与正式版 26.3 的 assets/minecraft/shaders/：全部 core 与 post
         // 都是「#version 330 + #extension GL_ARB_separate_shader_objects : require」。
         // layout(location) 用在 in/out 上在 330 里本来非法，靠这个扩展才合法——
         // 想当然地升到 #version 450 会和原版走两条路，这条用例就是拦住那个想当然。

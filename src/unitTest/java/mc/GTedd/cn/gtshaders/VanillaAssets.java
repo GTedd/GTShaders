@@ -12,7 +12,7 @@ import java.util.Properties;
  * <h2>为什么要有这个类</h2>
  *
  * <p>版本号原本硬编码在五个地方（两个测试工具、这里的两条路径、两个 python 脚本），
- * 跟一次版本（26.2 → 26.3-pre-1 → pre-2 → rc-2）就要挨个改一遍。漏掉一个的表现是
+ * 跟一次版本（26.2 → 26.3-pre-1 → pre-2 → rc-2 → 26.3）就要挨个改一遍。漏掉一个的表现是
  * <b>测试静默跳过</b>——目录名对不上，{@code assetsPresent()} 返回 false，一切"通过"。
  * 正好是最不该静默的那类失败：核对原版格式的那一半没跑，而报告上看不出来。
  *
@@ -27,7 +27,7 @@ public final class VanillaAssets {
     private VanillaAssets() {
     }
 
-    /** 官方版本 id，例如 {@code 26.3-rc-2}。带连字符，和 Mojang 的清单一致。 */
+    /** 官方版本 id，例如 {@code 26.3}（预发布带连字符，如 {@code 26.3-rc-2}），和 Mojang 的清单一致。 */
     public static String version() {
         Path props = Path.of("gradle.properties");
         if (!Files.isRegularFile(props)) {

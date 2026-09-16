@@ -5,7 +5,7 @@ plugins {
 }
 
 // 「+」后面是 SemVer 构建元数据，只标注这个 jar 针对的 MC 版本，不参与版本比较。
-// jar 名与 Modrinth 版本号都用它：GTShaders-0.1.0-alpha.1+26.3-rc-2.jar
+// jar 名与 Modrinth 版本号都用它：GTShaders-0.1.0-alpha.1+26.3.jar
 version = "${project.mod_version}+${project.minecraft_version}"
 group = project.maven_group
 

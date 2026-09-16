@@ -2,11 +2,11 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-An in-game visual editor for Minecraft shaders. Write a post-processing effect or change one of 21 vanilla core
+An in-game visual editor for Minecraft shaders. Write a post-processing effect or change one of 25 vanilla core
 shaders, drag the parameters and watch the result on your live game view, then export a plain resource pack that
 works **without this mod**.
 
-- **Status**: alpha, built against Minecraft 26.3-rc-2; expect bugs and breaking changes before 0.1.0
+- **Status**: alpha, built against Minecraft 26.3; expect bugs and breaking changes before 0.1.0
 - **Minecraft**: 26.3 (Java 25), client-side only
 - **Loader**: Fabric Loader 0.19.5+ with [Fabric API](https://modrinth.com/mod/fabric-api)
 - **License**: [MIT](LICENSE) — third-party credits are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * 分层 GPU 计时的挂点：{@code PostPass.addToFrame} 登记给 FrameGraph 的那个执行体。
  *
  * <p>{@code addToFrame} 本身只是登记，真正发出绘制命令的是它传给 {@code FramePass.executes} 的
- * lambda，编译后名叫 {@code lambda$addToFrame$1}（26.3-rc-2 字节码核对过：它里面调
+ * lambda，编译后名叫 {@code lambda$addToFrame$1}（26.3 字节码核对过：它里面调
  * {@code createRenderPass}、{@code setPipeline}、{@code draw}）。计时要包住的正是这一段。
  *
  * <p>lambda 的编号是编译器给的，原版改动这个类时可能变，所以两处注入都是 {@code require = 0}：

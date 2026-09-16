@@ -1,6 +1,7 @@
 {
   "_comment": "核心着色器示例。每个只写钩子函数，其余由 CoreShaderCodegen 从原版模板生成。加一个 = 丢一个 .fsh 到 corelib/ + 在这里加一行。",
   "effects": [
+    {"id": "terrain_ortho", "kind": "terrain", "zh_cn": "等距视角（2.5D）", "en_us": "Isometric View"},
     { "id": "sky_gradient",    "kind": "sky",           "zh_cn": "自定义天空渐变", "en_us": "Sky Gradient" },
     { "id": "sky_aurora",      "kind": "sky",           "zh_cn": "极光天幕",       "en_us": "Aurora Sky" },
     { "id": "stars_twinkle",   "kind": "stars",         "zh_cn": "星星闪烁",       "en_us": "Twinkling Stars" },

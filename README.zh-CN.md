@@ -2,10 +2,10 @@
 
 [English](README.md) | **简体中文**
 
-游戏内的 Minecraft 着色器可视化编辑器。写一个后处理效果，或改 21 种原版核心着色器中的任意一种，
+游戏内的 Minecraft 着色器可视化编辑器。写一个后处理效果，或改 25 种原版核心着色器中的任意一种，
 拖动参数、在实时游戏画面上看效果，最后导出成**不需要本模组**也能使用的普通资源包。
 
-- **状态**：alpha 开发版，基于 Minecraft 26.3-rc-2 构建；0.1.0 正式版之前可能有 bug 和不兼容改动
+- **状态**：alpha 开发版，基于 Minecraft 26.3 构建；0.1.0 正式版之前可能有 bug 和不兼容改动
 - **Minecraft**：26.3（Java 25），仅客户端
 - **加载器**：Fabric Loader 0.19.5+，需要 [Fabric API](https://modrinth.com/mod/fabric-api)
 - **许可证**：[MIT](LICENSE)；第三方来源与鸣谢见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)

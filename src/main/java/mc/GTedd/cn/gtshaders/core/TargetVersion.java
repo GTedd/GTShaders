@@ -30,7 +30,7 @@ public final class TargetVersion {
     private TargetVersion() {
     }
 
-    /** 官方版本 id，例如 {@code 26.3-rc-2}。带连字符，和 Mojang 的清单一致。 */
+    /** 官方版本 id，例如 {@code 26.3}（预发布带连字符，如 {@code 26.3-rc-2}），和 Mojang 的清单一致。 */
     public static String minecraft() {
         return get("minecraft_version");
     }

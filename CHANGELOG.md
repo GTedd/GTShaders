@@ -12,6 +12,21 @@ targets and does not affect version ordering.
 
 - Library effect `synthwave_classic` (Synthwave Classic): the hard-edged synthwave look with a fixed western sun,
   a faster grid and a scan reveal blended through the reveal mask.
+- Core shader example `terrain_ortho` (Isometric View): swaps the vanilla perspective projection for an
+  orthographic one to get the RTS-style overhead look, with an optional locked view angle, parallel fog and
+  ordered-dither surface X-ray. It detects the interface's own orthographic matrix and leaves the GUI alone, so the
+  same source can be applied to every kind. Ported to 26.3 reversed depth: the near plane maps to 1 and the far
+  plane to 0, and the far plane comes from a parameter because the infinite projection does not carry it.
+- Four core shader kinds: `water_mask`, `entity_outline`, `leash` and `position_tex_color`. Effects that change the
+  view projection need them, or those objects keep the vanilla projection and no longer line up with the scene.
+
+### Changed
+
+- Build target moved from Minecraft 26.3-rc-2 to the 26.3 release, with Fabric API `0.160.5+26.3`. Nothing this
+  mod touches changed: only six vanilla classes differ between rc-2 and the release and none of them is referenced
+  here, and all 94 vanilla shader assets are byte-identical. Both pack formats stay at `97.1` / `121.0`, so
+  exported resource packs and data packs are unaffected.
+- `fabric.mod.json` now requires `~26.3`, so the 26.3 pre-releases and release candidates are no longer accepted.
 
 ## 0.1.0-alpha.1+26.3-rc-2 - 2026-09-13
 

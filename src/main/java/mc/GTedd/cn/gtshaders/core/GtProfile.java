@@ -15,7 +15,7 @@ import java.util.List;
  *
  * <h2>26.2 → 26.3 都变了什么（留档）</h2>
  *
- * <p>下面每一条都<b>逐字核对过官方 client.jar 里的实际资产</b>（26.3-pre-2 与 rc-2 的
+ * <p>下面每一条都<b>逐字核对过官方 client.jar 里的实际资产</b>（26.3-pre-2、rc-2 与正式版 26.3 的
  * {@code assets/minecraft/shaders/}），不是照抄更新日志——日志只说了 include 和 location，
  * 没提 uniform 块被重排，而后者才是最致命的那一条。
  *
@@ -88,7 +88,7 @@ public enum GtProfile {
     /**
      * 资源包 {@code min_format}。
      *
-     * <p>取 <b>97</b>，也就是 26.3 预发布与候选版的资源包格式号（pre-1 到 rc-2 都是 97.1）。
+     * <p>取 <b>97</b>，也就是 26.3 的资源包格式号（pre-1 到正式版 26.3 一路都是 97.1）。
      *
      * <p>不取更低的值是有原因的：着色器的新写法（{@code #include}、{@code layout(location)}）
      * 从 93.0 起生效，但 {@code Globals} 的成员重排要到 <b>94.0</b> 才发生。
